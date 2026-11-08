@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Put A Pin In It</name>
+  <author>Guy Symonds</author>
+  <packageId>GuySymonds.PutAPinInIt</packageId>
+  <supportedVersions><li>1.6</li></supportedVersions>
+  <description>Mark promising landing sites on the world map. Select a tile and toggle its flag; pins stay with that world.</description>
+</ModMetaData>
