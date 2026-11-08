@@ -11,11 +11,31 @@ A small RimWorld mod for marking possible colony landing sites on the **world ma
 - Flags are only visual overlays; they do **not** create world objects, claim tiles, or change whether you can settle.
 - Intended for the world/landing selection UI. No extra menus, hotkeys, dependencies or mod settings.
 
-## Installation / build
+## Build and deploy locally (Windows)
 
-Requires **RimWorld 1.6** and its managed assemblies. Compile with `dotnet build Source/PutAPinInIt.csproj -p:RimWorldDir="C:/path/to/RimWorld"` (requires the .NET Framework 4.7.2 reference assemblies). The build outputs `Assemblies/PutAPinInIt.dll`.
+Requires **RimWorld 1.6**, a .NET SDK with .NET Framework 4.7.2 targeting support, and PowerShell. Open `PutAPinInIt.slnx` in a recent Visual Studio (or build it via `dotnet build`). SLNX requires Visual Studio 2022 17.14+ or .NET SDK 9.0.200+.
 
-Copy this directory into `RimWorld/Mods/PutAPinInIt/` and enable it in the Mods menu. The distributed mod needs `About/`, `Assemblies/` and `Textures/`; it does not need `Source/`.
+From the repository root, to build and copy the mod into the default Steam installation:
+
+```powershell
+.\scripts\Deploy.ps1
+```
+
+If RimWorld lives in a different Steam library, supply its location:
+
+```powershell
+.\scripts\Deploy.ps1 -RimWorldDir 'D:\SteamLibrary\steamapps\common\RimWorld'
+```
+
+The script builds Release and copies **only** `About/`, `Textures/` and `Assemblies/` into `<RimWorldDir>\Mods\PutAPinInIt`. It does not delete existing files or modify saves. If the Mods folder is elsewhere, use `-ModsDir` to specify it. For an already compiled DLL, use `-SkipBuild`. Build failures prevent deployment.
+
+To build without deploying:
+
+```powershell
+dotnet build .\PutAPinInIt.slnx -c Release '-p:RimWorldDir=D:\SteamLibrary\steamapps\common\RimWorld'
+```
+
+Restart RimWorld after updating the DLL, then enable the mod under **Mods**.
 
 ## Status
 
