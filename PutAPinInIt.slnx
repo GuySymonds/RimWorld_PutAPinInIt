@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Source/PutAPinInIt.csproj" />
+  <Project Path="Tests/SmokeTests.csproj" />
+</Solution>

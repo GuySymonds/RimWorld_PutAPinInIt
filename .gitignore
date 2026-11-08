@@ -426,3 +426,9 @@ FodyWeavers.xsd
 
 # Official VS Code C# Dev Kit Extension exclusion
 #*.lscache
+
+# Compiled mod assembly (built locally)
+/Assemblies/
+/Tests/SmokeMod/Assemblies/
+/.test-data/
+/dist/

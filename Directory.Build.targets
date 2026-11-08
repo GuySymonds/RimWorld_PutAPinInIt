@@ -1,0 +1,8 @@
+<Project>
+  <Target Name="ValidateRimWorldReferences" BeforeTargets="ResolveAssemblyReferences">
+    <Error Condition="!Exists('$(RimWorldManagedDir)/Assembly-CSharp.dll')"
+           Text="RimWorld assemblies not found. Set RimWorldDir to the Windows RimWorld installation." />
+    <Error Condition="!Exists('$(HarmonyPath)')"
+           Text="Harmony assembly not found. Set HarmonyPath to Harmony's RimWorld 1.6 0Harmony.dll." />
+  </Target>
+</Project>
