@@ -1,0 +1,8 @@
+<Project>
+  <PropertyGroup>
+    <RimWorldDir Condition="'$(RimWorldDir)' == '' And Exists('S:/SteamLibrary/steamapps/common/RimWorld/Version.txt')">S:/SteamLibrary/steamapps/common/RimWorld</RimWorldDir>
+    <RimWorldDir Condition="'$(RimWorldDir)' == ''">$(ProgramFiles(x86))/Steam/steamapps/common/RimWorld</RimWorldDir>
+    <RimWorldManagedDir>$(RimWorldDir)/RimWorldWin64_Data/Managed</RimWorldManagedDir>
+    <HarmonyPath Condition="'$(HarmonyPath)' == ''">$(RimWorldDir)/../../workshop/content/294100/2009463077/1.6/Assemblies/0Harmony.dll</HarmonyPath>
+  </PropertyGroup>
+</Project>

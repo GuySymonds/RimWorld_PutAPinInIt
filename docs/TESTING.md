@@ -1,19 +1,15 @@
-# Verification checklist
+# Testing Put A Pin In It
 
-This source scaffold has **not** been compiled or tested in game. Before release:
+Run `./scripts/Run-IntegrationTests.ps1` with RimWorld closed and Harmony installed. It builds both projects, deploys the mod, and launches a new RimWorld game with its own settings and saves. Each run prints the path to its `Results.txt`. Check `Player.log` in the same folder if startup or a test fails. The smoke-test mod is temporary and the release ZIP contains only the production mod files and licence.
 
-1. Build against a locally installed **RimWorld 1.6**; resolve API/reference mismatches instead of adding speculative compatibility shims.
-2. Generate a new world. During initial landing-site selection, select a tile; ensure **Pin landing site** appears without obscuring vanilla controls.
-3. Pin two separated tiles; rotate the globe and zoom in/out. Check alignment, back-face occlusion and overlap with vanilla UI.
-4. Remove one pin; confirm the other remains.
-5. Save and reload a game; confirm pins persist.
-6. Start a different world; confirm the pins from the first world do not appear.
-7. Settle on a pinned tile; verify the marker does not affect settlement eligibility.
-8. Check Player.log for exceptions and test with common world-map UI mods.
+The smoke test checks that a generated world starts with no pins, pins can be added and removed independently, and the UI patches and flag artwork load. It checks that tooltip text describes the pinned tile while a different tile is selected. It then inspects and reloads a real save to confirm that only the retained pin survives.
 
-## Known prototype limitations
+## Manual landing-screen check
 
-- Screen-space icons remain a fixed size; they are not perspective-scaled meshes.
-- The top-right button may overlap other UI or not appear in every landing workflow.
-- Dot-product back-face culling is approximate near the globe limb.
-- Each pin is drawn on every repaint; intended for a small shortlist of sites.
+1. Enable Harmony and Put A Pin In It. Start a new colony and generate a world.
+2. Right-click an empty surface tile and choose **Pin landing site**. Check that the red flag appears during initial landing-site selection.
+3. Pin two separated tiles. Rotate and zoom the globe. Check that flags track their tiles, disappear behind the globe, and stay legible at your UI scale.
+4. Hover over each flag and check that its tooltip describes its own tile. Left-click a flag and check that the correct hex and terrain pane become selected. Right-click the first flag and choose **Remove landing pin**. Check that the second pin remains.
+5. Settle on the remaining pinned tile if it is eligible. Open the world map, check the pin, save, and reload. Check that the pin still appears and that the pin controls are absent from the local colony map.
+6. Generate another world and check that it has no pins from the first world. If you use Odyssey, switch to the orbit layer and check that surface pins and controls are hidden.
+7. With a player caravan selected, check that right-click still issues the vanilla caravan order. Check `Player.log` for exceptions during the walkthrough.

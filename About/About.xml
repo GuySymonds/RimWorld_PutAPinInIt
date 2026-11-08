@@ -3,6 +3,15 @@
   <name>Put A Pin In It</name>
   <author>Guy Symonds</author>
   <packageId>GuySymonds.PutAPinInIt</packageId>
+  <modVersion>0.1.1</modVersion>
   <supportedVersions><li>1.6</li></supportedVersions>
-  <description>Mark promising landing sites on the world map. Select a tile and toggle its flag; pins stay with that world.</description>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+    </li>
+  </modDependencies>
+  <loadAfter><li>brrainz.harmony</li></loadAfter>
+  <description>Mark promising landing sites from the world map right-click menu. Hover over a flag for terrain details or click it to highlight its tile. Pins stay with that world.</description>
 </ModMetaData>
